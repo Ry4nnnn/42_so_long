@@ -10,7 +10,7 @@ int	exit_game(t_data *data)
 	return (0);
 }
 
-static	int	deal_key(int key, t_data *data)
+static	int	key_input(int key, t_data *data)
 {
 	if (key == 13)
 		ft_putstr_fd("Key pressed: W\n", 1);
@@ -25,34 +25,44 @@ static	int	deal_key(int key, t_data *data)
 	return (0);
 }
 
-int init_player(t_data *data)
+static int init_image(t_data *data)
 {
-	data->player = malloc(sizeof(t_player));
-	data->player->path = "player.xpm";
+	// data->player = malloc(sizeof(t_player));
+	data->player.path = "./image/player.xpm";
+	// data->wall = malloc(sizeof(t_wall));
+	data->wall.path = "./image/wall.xpm";
 	return(0);
 }
 
-int init_wall(t_data *data)
+void testing(t_data *data)
 {
-	data->wall = malloc(sizeof(t_wall));
-	data->wall->path = "wall.xpm";
-	return (0);
+	printf("%s", data->player.path);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	t_data *data;
-	data = malloc(sizeof(t_data));
-	data->mlx_ptr = mlx_init();
-	data->win_ptr = mlx_new_window(data->mlx_ptr, 600, 300, "test_so_long");
-	void *play;
-	int w = 32;
-	int h = 32;
+	t_data		*data;
+	void		*play;
+	// int			fd;
+	if (argc == 2)
+	{
+		data = malloc(sizeof(t_data));
+		data->mlx_ptr = mlx_init();
+		data->win_ptr = mlx_new_window(data->mlx_ptr, 640, 320, "Ryan's so_long");
+		int w = 32;
+		int h = 32;
+		// fd = open("map.ber", O_RDONLY);
 
-	init_player(data);
-	play = mlx_xpm_file_to_image(data->mlx_ptr, data->player->path, &w, &h);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, play, 2, 2);
-	// mlx_hook(data->win_ptr, 17, 1L << 17, exit_game, data);
-	mlx_key_hook(data->win_ptr, deal_key, data);
-	mlx_loop(data->mlx_ptr);
+		// get_next_line(fd);
+		check_map_name(data, argv[1]);
+		init_image(data);
+		play = mlx_xpm_file_to_image(data->mlx_ptr, data->player.path, &w, &h);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, play, 32, 64);
+		// mlx_hook(data->win_ptr, 17, 1L << 17, exit_game, data);
+		mlx_key_hook(data->win_ptr, key_input, data);
+		mlx_loop(data->mlx_ptr);
+	}
+	else
+		ft_putstr_fd("blablabla", 1);
+		return (0);
 }
