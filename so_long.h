@@ -1,0 +1,34 @@
+#ifndef SO_LONG_H
+# define SO_LONG_H
+
+#include <unistd.h>
+#include "mlx.h"
+#include "libft/libft.h"
+
+// typedef	struct	s_position
+// {
+// 	int	x;
+// 	int	y;
+// }	t_position;
+
+typedef	struct	s_player
+{
+	char		*path;
+	int			count;
+}	t_player;
+
+
+typedef	struct	s_wall
+{
+	char	*path;
+}	t_wall;
+
+typedef	struct s_data
+{
+	void 		*mlx_ptr;
+	void 		*win_ptr;
+	t_player	*player;
+	t_wall		*wall;
+}	t_data;
+
+#endif
