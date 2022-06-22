@@ -18,8 +18,10 @@ static	int	key_input(int key, t_data *data)
 	else if (key == 2)
 		ft_putstr_fd("Key pressed: D\n", 1);
 	else if (key == 53)
+	{
 		ft_putstr_fd("Key pressed: ESC\n", 1);
 		exit_game(data);
+	}
 	return (0);
 }
 
@@ -43,16 +45,14 @@ int	main(int argc, char **argv)
 		data->win_ptr = mlx_new_window(data->mlx_ptr, 640, 320, "Ryan's so_long");
 		int w = 32;
 		int h = 32;
-		// fd = open("map.ber", O_RDONLY);
 
-		// get_next_line(fd);
 		if (check_mapfile_name(argv[1]))//check filename
 		{
-			check_map(argv[1]);
+			check_map(argv[1]);//check for wall
 			init_image(data);
 			play = mlx_xpm_file_to_image(data->mlx_ptr, data->player.path, &w, &h);
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, play, 32, 64);
-			// mlx_hook(data->win_ptr, 17, 1L << 17, exit_game, data);
+			mlx_hook(data->win_ptr, 17, 1L << 17, exit_game, data);
 			mlx_key_hook(data->win_ptr, key_input, data);
 			mlx_loop(data->mlx_ptr);
 		}

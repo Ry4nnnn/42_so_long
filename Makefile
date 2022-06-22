@@ -4,7 +4,7 @@ OBJS	= ${SRCS:.c=.o}
 LIB		= -L./libft -lft -lmlx
 INCLUDE = -Iincludes -Imlx -Ilibft
 
-FLAGS	= -Wall -Werror -Wextra -fsanitize=address -g3
+# FLAGS	= -Wall -Werror -Wextra -fsanitize=address -g3
 LINKS	= -framework OpenGL -framework Appkit
 CC		= gcc
 RM		= rm -rf
@@ -14,10 +14,10 @@ all		: ${NAME}
 ${NAME} : ${OBJS}
 	@make -C libft
 	@${CC} ${FLAGS} ${LIB} ${INCLUDE} $(addprefix obj/, ${OBJS}) ${LINKS} -o $@
-
+ 
 %.o : %.c
 	@mkdir -p obj
-	${CC} ${CCFLAGS} ${INCLUDE} -c $< -o obj/$@
+	${CC} ${FLAGS} ${INCLUDE} -c $< -o obj/$@
 
 
 clean :

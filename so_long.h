@@ -4,8 +4,8 @@
 #include <unistd.h>
 #include "mlx.h"
 #include "libft/libft.h"
-#include "get_next_line/get_next_line.h"
 #include <stdio.h>
+#include <fcntl.h>
 
 // typedef	struct	s_position
 // {
@@ -44,6 +44,13 @@ typedef	struct s_data
 	t_enemy		enemy;
 }	t_data;
 
+//int main function
 int	check_mapfile_name(char *argv);
+int check_map(char *argv);
+//
+int	check_top_bot_line(char *buffer);
+int	check_middle_line(char *buffer);
+int	counter_line(char *argv);
+int check_buffer_len(char *argv);
 
 #endif
