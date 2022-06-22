@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 		// fd = open("map.ber", O_RDONLY);
 
 		// get_next_line(fd);
-		check_map_name(data, argv[1]);
+		// check_map_name(data, argv[1]);//to check if filename is .ber
 		init_image(data);
 		play = mlx_xpm_file_to_image(data->mlx_ptr, data->player.path, &w, &h);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, play, 32, 64);

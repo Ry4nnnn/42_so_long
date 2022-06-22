@@ -1,33 +1,31 @@
-NAME	= so_long.out
-SRCS	= main.c
-OBJS	= ${SRCS:.c=.0}
-LIB		= ./libft
+NAME	= so_long
+SRCS	= $(wildcard *.c)
+OBJS	= ${SRCS:.c=.o}
+LIB		= -Llibft -lft -lmlx
+INCLUDE = -Iincludes -Imlx -Ilibft
 
-FLAGS	= -Wall -Werror -Wextra
-LINKS	= -I libft -lmlx -framework OpenGL -framework Appkit
+FLAGS	= -Wall -Werror -Wextra -fsanitize=address -g3
+LINKS	= -framework OpenGL -framework Appkit
 CC		= gcc
 RM		= rm -rf
 
 all		: ${NAME}
 
-$(NAME)	: ${OBJS}
-		make -C ${LIB}
-		ar rcs ${NAME} ${OBJS} ${LIB}/*.o
+${NAME} : ${OBJS}
+	@${CC} ${FLAGS} ${LIB} ${INCLUDE} $(addprefix obj/, ${OBJS}) ${LINKS} -o $@
 
 %.o : %.c
-			@echo "Creating Objects..."
-			$(CC) $(FLAGS) ${LINKS} -c $< -o $@
+	@mkdir -p obj
+	${CC} ${CCFLAGS} ${INCLUDE} -c $< -o obj/$@
 
-clean	:
-			@echo "Cleaning binary files..."
-			make clean -C ${LIB}
-			${RM} ${OBJS}
 
-fclean	: clean
-		@echo "Removing Library..."
-		make fclean -C ${LIB}
-		${RM} ${NAME}
+clean :
+	rm -rf obj
+
+fclean : clean
+	rm -rf ${NAME}
+	make fclean -C libft
 
 re : fclean all
 
-.PHONY: all clean fclean re
+# .PHONY: all clean fclean re
