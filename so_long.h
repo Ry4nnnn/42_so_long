@@ -44,4 +44,6 @@ typedef	struct s_data
 	t_enemy		*enemy;
 }	t_data;
 
+int	check_mapfile_name(char *argv);
+
 #endif

@@ -54,15 +54,18 @@ int	main(int argc, char **argv)
 		// fd = open("map.ber", O_RDONLY);
 
 		// get_next_line(fd);
-		// check_map_name(data, argv[1]);//to check if filename is .ber
-		init_image(data);
-		play = mlx_xpm_file_to_image(data->mlx_ptr, data->player.path, &w, &h);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, play, 32, 64);
-		// mlx_hook(data->win_ptr, 17, 1L << 17, exit_game, data);
-		mlx_key_hook(data->win_ptr, key_input, data);
-		mlx_loop(data->mlx_ptr);
+		if (check_mapfile_name(argv[1]))//check filename
+		{
+			init_image(data);
+			play = mlx_xpm_file_to_image(data->mlx_ptr, data->player.path, &w, &h);
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, play, 32, 64);
+			// mlx_hook(data->win_ptr, 17, 1L << 17, exit_game, data);
+			mlx_key_hook(data->win_ptr, key_input, data);
+			mlx_loop(data->mlx_ptr);
+		}
+		ft_putstr_fd("Filename must end with .ber", 1);
 	}
 	else
-		ft_putstr_fd("blablabla", 1);
+		ft_putstr_fd("Usage: [Programe Name] [Map.ber]", 1);
 		return (0);
 }
