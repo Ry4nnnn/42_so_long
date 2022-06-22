@@ -40,8 +40,8 @@ typedef	struct s_data
 	void 		*win_ptr;
 	t_player	player;
 	t_wall		wall;
-	t_floor		*floor;
-	t_enemy		*enemy;
+	t_floor		floor;
+	t_enemy		enemy;
 }	t_data;
 
 int	check_mapfile_name(char *argv);

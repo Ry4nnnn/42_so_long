@@ -1,6 +1,3 @@
-// #include <unistd.h>
-// #include "mlx.h"
-// #include "libft.h"
 #include "so_long.h"
 
 int	exit_game(t_data *data)
@@ -21,22 +18,17 @@ static	int	key_input(int key, t_data *data)
 	else if (key == 2)
 		ft_putstr_fd("Key pressed: D\n", 1);
 	else if (key == 53)
+		ft_putstr_fd("Key pressed: ESC\n", 1);
 		exit_game(data);
 	return (0);
 }
 
 static int init_image(t_data *data)
 {
-	// data->player = malloc(sizeof(t_player));
 	data->player.path = "./image/player.xpm";
-	// data->wall = malloc(sizeof(t_wall));
 	data->wall.path = "./image/wall.xpm";
+	data->floor.path = "./image/floor.xpm";
 	return(0);
-}
-
-void testing(t_data *data)
-{
-	printf("%s", data->player.path);
 }
 
 int	main(int argc, char **argv)
@@ -56,6 +48,7 @@ int	main(int argc, char **argv)
 		// get_next_line(fd);
 		if (check_mapfile_name(argv[1]))//check filename
 		{
+			check_map(argv[1]);
 			init_image(data);
 			play = mlx_xpm_file_to_image(data->mlx_ptr, data->player.path, &w, &h);
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, play, 32, 64);
