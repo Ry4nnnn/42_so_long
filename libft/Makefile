@@ -32,7 +32,6 @@ bonus : ${OBJS_BONUS}
 		ar rcs ${NAME} ${OBJS_BONUS}
 
 %.o : %.c
-		@echo "Creating ojects..."
 		@${CC} ${CFLAGS} -c $<
 
 clean :

@@ -4,7 +4,7 @@ OBJS	= ${SRCS:.c=.o}
 LIB		= -L./libft -lft -lmlx
 INCLUDE = -Iincludes -Imlx -Ilibft
 
-# FLAGS	= -Wall -Werror -Wextra -fsanitize=address -g3
+FLAGS	= -Wall -Werror -Wextra -fsanitize=address -g3
 LINKS	= -framework OpenGL -framework Appkit
 CC		= gcc
 RM		= rm -rf
@@ -17,14 +17,15 @@ ${NAME} : ${OBJS}
  
 %.o : %.c
 	@mkdir -p obj
-	${CC} ${FLAGS} ${INCLUDE} -c $< -o obj/$@
-
+	@${CC} ${FLAGS} ${INCLUDE} -c $< -o obj/$@
 
 clean :
-	rm -rf obj
+	@rm -rf obj
+	@echo "removing OBJ directory..."
 
 fclean : clean
-	rm -rf ${NAME}
+	@rm -rf ${NAME}
+	@echo "removing ./so_long..."
 	make fclean -C libft
 
 re : fclean all

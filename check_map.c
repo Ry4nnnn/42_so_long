@@ -16,7 +16,6 @@ int	check_top_bot_line(char *buffer)
 		i++;
 	}
 	return (1);
-	free (buffer);
 }
 
 int	check_mid_line(char *buffer)
@@ -29,7 +28,6 @@ int	check_mid_line(char *buffer)
 		return (0);
 	}
 	return (1);
-	free (buffer);
 }
 
 int	counter_line(char *argv)
@@ -43,7 +41,6 @@ int	counter_line(char *argv)
 	buffer = get_next_line(fd);
 	while (buffer)
 	{
-		free (buffer);
 		counter++;
 	}
 	close (fd);
@@ -65,7 +62,6 @@ int check_buffer_len(char *argv)
 	{
 		if (i != ft_strlen(buffer))
 		{
-			free (buffer);
 			return (0);
 		}
 		fd_len--;
@@ -82,15 +78,18 @@ int check_map(char *argv)
 	fd_len = counter_line(argv);//return number of lines in .ber
 	fd  = open(argv, O_RDONLY);
 	buffer = get_next_line(fd);
-	check_top_bot_line(buffer);
+	check_top_bot_line(buffer);//seg
+	free (buffer);
 	while (fd_len > 1)
 	{
 		buffer = get_next_line(fd);
 		check_mid_line(buffer);
+		free (buffer);
 		fd_len--;
 	}
 	buffer = get_next_line(fd);
-	check_top_bot_line(buffer);
+	check_top_bot_line(buffer);//seg
+	free (buffer);
 	close (fd);
 	check_buffer_len(argv);
 	return (1);
