@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:52:14 by welim             #+#    #+#             */
-/*   Updated: 2022/06/23 22:54:15 by welim            ###   ########.fr       */
+/*   Updated: 2022/06/23 23:01:34 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,6 @@ typedef struct s_data
 //int main function
 void	check_map(char *argv);
 int		counter_line(char *argv);
-void	check_error(char *argv, t_data *data);
+void	check_valid(char *argv, t_data *data);
 
 #endif

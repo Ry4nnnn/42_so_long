@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:45:14 by welim             #+#    #+#             */
-/*   Updated: 2022/06/23 22:45:14 by welim            ###   ########.fr       */
+/*   Updated: 2022/06/23 23:01:20 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static void	check_rules(char *argv, t_data *data)
 	return ;
 }
 
-void	check_error(char *argv, t_data *data)
+void	check_valid(char *argv, t_data *data)
 {
 	check_mapfile_name(argv);
 	check_map(argv);

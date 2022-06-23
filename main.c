@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:49:08 by welim             #+#    #+#             */
-/*   Updated: 2022/06/23 22:56:21 by welim            ###   ########.fr       */
+/*   Updated: 2022/06/23 23:01:41 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 		data->mlx_ptr = mlx_init();
 		data->win_ptr = mlx_new_window(data->mlx_ptr, 640, 320, "so_long");
 		init_struct(data);
-		check_error(argv[1], data);
+		check_valid(argv[1], data);
 		init_image(data);
 		play = mlx_xpm_file_to_image(data->mlx_ptr, data->player.path, &w, &h);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, play, 32, 64);
