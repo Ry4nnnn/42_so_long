@@ -20,9 +20,11 @@ NAME = libft.a
 CC = gcc
 
 CFLAGS	= -Wall -Werror -Wextra
+NEWLINE = \e[1K\r
+GREEN='\033[32m'
 
 $(NAME) : ${OBJS}
-		@echo "Making library..."
+		@printf "${NEWLINE}Library Made ^.^"
 		@ar rcs ${NAME} ${OBJS}
 
 all : $(NAME)
@@ -33,13 +35,14 @@ bonus : ${OBJS_BONUS}
 
 %.o : %.c
 		@${CC} ${CFLAGS} -c $<
+		@printf "$(NEWLINE)Creating object file $@ from $<"
 
 clean :
 		@echo "Cleaning binary files..."
 		@rm -f ${OBJS} ${OBJS_BONUS}
 
 fclean : clean
-		@echo "Removing library..."
+		@echo "Cleaning library..."
 		@rm -f libft.a
 
 re : fclean all

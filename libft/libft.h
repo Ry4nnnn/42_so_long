@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:02:25 by welim             #+#    #+#             */
-/*   Updated: 2022/06/22 22:53:15 by welim            ###   ########.fr       */
+/*   Updated: 2022/06/23 22:42:04 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+# define BUFFER_SIZE 1000
+
+char	*get_next_line(int fd);
 //part 1
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
@@ -77,9 +80,5 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
-//gnl
-# define BUFFER_SIZE 1000
-char	*get_next_line(int fd);
 
 #endif

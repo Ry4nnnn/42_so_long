@@ -4,7 +4,7 @@ OBJS	= ${SRCS:.c=.o}
 LIB		= -L./libft -lft -lmlx
 INCLUDE = -Iincludes -Imlx -Ilibft
 
-FLAGS	= -Wall -Werror -Wextra -fsanitize=address -g3
+FLAGS	= -Wall -Werror -Wextra
 LINKS	= -framework OpenGL -framework Appkit
 CC		= gcc
 RM		= rm -rf
@@ -21,7 +21,7 @@ ${NAME} : ${OBJS}
 
 clean :
 	@rm -rf obj
-	@echo "removing OBJ directory..."
+	@echo "Cleaning OBJ directory..."
 
 fclean : clean
 	@rm -rf ${NAME}
