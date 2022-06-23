@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:52:14 by welim             #+#    #+#             */
-/*   Updated: 2022/06/23 23:01:34 by welim            ###   ########.fr       */
+/*   Updated: 2022/06/23 23:14:14 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,15 @@ typedef struct s_data
 	t_exit		exit;
 }	t_data;
 
-//int main function
-void	check_map(char *argv);
-int		counter_line(char *argv);
+//so_long check_valid
 void	check_valid(char *argv, t_data *data);
+// int	counter_line(char *argv);
+
+//so_long check_utils
+int	check_top_bot_line(int fd);
+int	check_mid_line(int fd);
+int	check_buffer_len(char *argv);
+void	populate_objects(char *buffer, t_data *data);
+void	check_objects(t_data *data);
 
 #endif
