@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:49:08 by welim             #+#    #+#             */
-/*   Updated: 2022/06/23 23:01:41 by welim            ###   ########.fr       */
+/*   Updated: 2022/06/24 22:51:13 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 static t_data	*init_struct(t_data *data)
 {
-	data->collect.count = 0;
+	data->coin.count = 0;
 	data->player.count = 0;
 	data->exit.count = 0;
+	data->killer.count = 0;
 	return (data);
 }
 
@@ -69,6 +70,8 @@ int	main(int argc, char **argv)
 		data->win_ptr = mlx_new_window(data->mlx_ptr, 640, 320, "so_long");
 		init_struct(data);
 		check_valid(argv[1], data);
+		create_map(argv[1], data);
+		// printf ("%s", data->map.map[1]);
 		init_image(data);
 		play = mlx_xpm_file_to_image(data->mlx_ptr, data->player.path, &w, &h);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, play, 32, 64);

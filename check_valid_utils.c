@@ -78,7 +78,9 @@ void	populate_objects(char *buffer, t_data *data)
 		else if (buffer[i] == 'E')
 			data->exit.count += 1;
 		else if (buffer[i] == 'C')
-			data->collect.count += 1;
+			data->coin.count += 1;
+		else if (buffer[i] == 'K')
+			data->killer.count += 1;
 		i++;
 	}
 }
@@ -87,17 +89,22 @@ void	check_objects(t_data *data)
 {
 	if (data->player.count != 1)
 	{
-		ft_putendl_fd("Must only contain one [P]", 2);
+		ft_putendl_fd("Must only contain one Player[P]", 2);
 		exit (1);
 	}
 	else if (data->exit.count < 1)
 	{
-		ft_putendl_fd("Must atleast contain one [E]", 2);
+		ft_putendl_fd("Must atleast contain one Exit[E]", 2);
 		exit (1);
 	}
-	else if (data->collect.count < 1)
+	else if (data->coin.count < 1)
 	{
-		ft_putendl_fd("Must atleast contain one [C]", 2);
+		ft_putendl_fd("Must atleast contain one Coin[C]", 2);
+		exit (1);
+	}
+	else if (data->killer.count > 1)
+	{
+		ft_putendl_fd("Must only contain one Killer[K]", 2);
 		exit (1);
 	}
 	return ;

@@ -21,12 +21,11 @@ ${NAME} : ${OBJS}
 
 clean :
 	@rm -rf obj
-	@echo "Cleaning OBJ directory..."
+	@echo "Cleaning binary files 'so_long'..."
 
 fclean : clean
 	@rm -rf ${NAME}
-	@echo "removing ./so_long..."
-	make fclean -C libft
+	@make fclean -C libft
 
 re : fclean all
 

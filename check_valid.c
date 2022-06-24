@@ -1,7 +1,7 @@
 #include "so_long.h"
 
 //to get the total lines of the map
-static int	counter_line(char *argv)
+int	counter_line(char *argv)
 {
 	int		counter;
 	int		fd;
@@ -79,6 +79,7 @@ static void	check_rules(char *argv, t_data *data)
 		populate_objects(buffer, data);
 		count--;
 	}
+	// printf ("player: %d\ncoin: %d\nexit: %d\nkiller: %d", data->player.count, data->coin.count, data->exit.count, data->killer.count);
 	check_objects(data);
 	return ;
 }
