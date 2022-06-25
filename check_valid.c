@@ -71,14 +71,16 @@ static void	check_rules(char *argv, t_data *data)
 	int		count;
 	char	*buffer;
 
-	fd = open(argv, O_RDONLY);
 	count = counter_line(argv);
+
+	fd = open(argv, O_RDONLY);
 	while (count)
 	{
 		buffer = get_next_line(fd);
 		populate_objects(buffer, data);
 		count--;
 	}
+	close (fd);
 	// printf ("player: %d\ncoin: %d\nexit: %d\nkiller: %d", data->player.count, data->coin.count, data->exit.count, data->killer.count);
 	check_objects(data);
 	return ;

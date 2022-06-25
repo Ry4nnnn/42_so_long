@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:49:08 by welim             #+#    #+#             */
-/*   Updated: 2022/06/24 22:51:13 by welim            ###   ########.fr       */
+/*   Updated: 2022/06/25 22:11:27 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 static t_data	*init_struct(t_data *data)
 {
-	data->coin.count = 0;
-	data->player.count = 0;
-	data->exit.count = 0;
-	data->killer.count = 0;
+	data->image.coin.count = 0;
+	data->image.player.count = 0;
+	data->image.exit.count = 0;
+	data->image.killer.count = 0;
+	data->map.height = 0;
+	data->map.length = 0;
 	return (data);
 }
 
@@ -48,9 +50,10 @@ static int	key_input(int key, t_data *data)
 
 static int	init_image(t_data *data)
 {
-	data->player.path = "./image/player.xpm";
-	data->wall.path = "./image/wall.xpm";
-	data->floor.path = "./image/floor.xpm";
+	data->image.player.one = "./image/player.xpm";
+	data->image.killer.one  = "/image/killer.xpm";
+	data->image.wall = "./image/wall.xpm";
+	data->image.floor = "./image/floor.xpm";
 	return (0);
 }
 
@@ -71,9 +74,8 @@ int	main(int argc, char **argv)
 		init_struct(data);
 		check_valid(argv[1], data);
 		create_map(argv[1], data);
-		// printf ("%s", data->map.map[1]);
 		init_image(data);
-		play = mlx_xpm_file_to_image(data->mlx_ptr, data->player.path, &w, &h);
+		play = mlx_xpm_file_to_image(data->mlx_ptr, data->image.player.one, &w, &h);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, play, 32, 64);
 		mlx_hook(data->win_ptr, 17, 1L << 17, exit_game, data);
 		mlx_key_hook(data->win_ptr, key_input, data);

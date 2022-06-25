@@ -63,6 +63,7 @@ int	check_buffer_len(char *argv)
 		else
 			cur++;
 	}
+	close (fd);
 	return (cur == prev);
 }
 
@@ -74,35 +75,35 @@ void	populate_objects(char *buffer, t_data *data)
 	while (buffer[i] != '\0')
 	{
 		if (buffer[i] == 'P')
-			data->player.count += 1;
+			data->image.player.count += 1;
 		else if (buffer[i] == 'E')
-			data->exit.count += 1;
+			data->image.exit.count += 1;
 		else if (buffer[i] == 'C')
-			data->coin.count += 1;
+			data->image.coin.count += 1;
 		else if (buffer[i] == 'K')
-			data->killer.count += 1;
+			data->image.killer.count += 1;
 		i++;
 	}
 }
 
 void	check_objects(t_data *data)
 {
-	if (data->player.count != 1)
+	if (data->image.player.count != 1)
 	{
 		ft_putendl_fd("Must only contain one Player[P]", 2);
 		exit (1);
 	}
-	else if (data->exit.count < 1)
+	else if (data->image.exit.count < 1)
 	{
 		ft_putendl_fd("Must atleast contain one Exit[E]", 2);
 		exit (1);
 	}
-	else if (data->coin.count < 1)
+	else if (data->image.coin.count < 1)
 	{
 		ft_putendl_fd("Must atleast contain one Coin[C]", 2);
 		exit (1);
 	}
-	else if (data->killer.count > 1)
+	else if (data->image.killer.count > 1)
 	{
 		ft_putendl_fd("Must only contain one Killer[K]", 2);
 		exit (1);

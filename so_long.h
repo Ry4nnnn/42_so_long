@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:52:14 by welim             #+#    #+#             */
-/*   Updated: 2022/06/24 21:42:41 by welim            ###   ########.fr       */
+/*   Updated: 2022/06/25 21:06:04 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,46 +25,32 @@
 // 	int	y;
 // }	t_position;
 
-typedef struct s_wall
+typedef struct s_motion
 {
-	char	*path;
-}	t_wall;
+	char *one;
+	char *two;
+	char *three;
+	char *four;
+	char *five;
+	int count;
+}	t_motion;
 
-typedef struct s_floor
+typedef struct s_image
 {
-	char	*path;
-}	t_floor;
-
-typedef struct s_killer
-{
-	char	*path;
-	int		count;
-}	t_killer;
-
-typedef struct s_player
-{
-	char		*path;
-	int			count;
-}	t_player;
-
-typedef struct s_coin
-{
-	char		*path;
-	int			count;
-}	t_coin;
-
-typedef struct s_exit
-{
-	char		*path;
-	int			count;
-}	t_exit;
+	t_motion player;
+	t_motion killer;
+	t_motion coin;
+	t_motion exit;
+	char	*wall;
+	char	*floor;
+	int		coin_count;
+}	t_image;
 
 typedef struct	s_map
 {
 	char 	**map;
 	int 	height;
 	int 	length;
-	
 }	t_map;
 
 typedef struct s_data
@@ -72,12 +58,7 @@ typedef struct s_data
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_map		map;
-	t_player	player;
-	t_wall		wall;
-	t_floor		floor;
-	t_killer	killer;
-	t_coin		coin;
-	t_exit		exit;
+	t_image		image;
 }	t_data;
 
 //so_long check_valid
