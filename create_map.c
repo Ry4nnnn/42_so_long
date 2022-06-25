@@ -21,7 +21,7 @@ static void	init_map(char *argv, t_data *data)
 
 	i = 0;
 	rows = counter_line(argv);
-	printf ("rows: %d\n", rows);
+	// printf ("rows: %d\n", rows);
 
 	fd = open(argv, O_RDONLY);
 	data->map.map = malloc(sizeof(char *) * rows);
@@ -42,26 +42,33 @@ static void	init_map_size(char *argv, t_data *data)
 	int fd;
 	char *buffer;
 	char *temp;
-	int height;
-	int i;
+	// int height;
 
-	i = 0;
-	// printf ("%d\n", counter_line(argv));
+	// printf ("before%d\n", counter_line(argv));
 	fd = open(argv, O_RDONLY);
-	printf ("%d\n", counter_line(argv));
+
 	buffer = get_next_line(fd);
 	close (fd);
+	// data->map.height = counter_line(argv);
 	temp = fill_column(buffer);
-	data->map.length = ft_strlen(temp);
-	height = counter_line(argv);
-	data->map.height = height;
 	free (buffer);
+	data->map.height = counter_line(argv);
+	data->map.length = ft_strlen(temp);
+	// printf ("temp =%s\n", temp);
+	// printf ("after%d\n", counter_line(argv));
+	// printf ("jbalbefore%d\n", counter_line(argv));
+	// height = counter_line(argv);
+	// printf ("jbal%d\n", height);
+	// data->map.height = height;
+	// close (fd);
+	// free (buffer);
 }
 
 void	create_map(char *argv, t_data *data)
 {
 	init_map(argv, data);
 	init_map_size(argv, data);
-	printf ("length: %d\n", data->map.length);
+	// data->map.height = counter_line(argv);
+	// printf ("length: %d\n", data->map.length);
 	printf ("height: %d\n", data->map.height);
 }

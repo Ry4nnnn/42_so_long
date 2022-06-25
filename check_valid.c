@@ -18,6 +18,7 @@ int	counter_line(char *argv)
 	}
 	free (buffer);
 	close (fd);
+	printf ("counter: %d\n", counter);
 	return (counter);
 }
 
