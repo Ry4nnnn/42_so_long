@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:52:14 by welim             #+#    #+#             */
-/*   Updated: 2022/06/25 21:06:04 by welim            ###   ########.fr       */
+/*   Updated: 2022/06/26 11:41:33 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,10 @@ void	check_objects(t_data *data);
 
 //create_map
 void	create_map(char *argv, t_data *data);
+
+// mlx.c
+void	mlx_create_window(t_data *data);
+int	exit_game(t_data *data);
+int	key_input(int key, t_data *data);
 
 #endif

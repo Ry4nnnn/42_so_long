@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:49:08 by welim             #+#    #+#             */
-/*   Updated: 2022/06/25 23:41:56 by welim            ###   ########.fr       */
+/*   Updated: 2022/06/26 11:41:29 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	exit_game(t_data *data)
 	return (0);
 }
 
-static int	key_input(int key, t_data *data)
+int	key_input(int key, t_data *data)
 {
 	if (key == 13)
 		ft_putstr_fd("Key pressed: W\n", 1);
@@ -60,12 +60,9 @@ static int	init_image(t_data *data)
 int	main(int argc, char **argv)
 {
 	t_data		*data;
-	// void		*play;
-	int			w;
-	int			h;
+	// void		*play; 
+	// int			w;
 
-	w = 32;
-	h = 32;
 	if (argc == 2)
 	{
 		data = malloc(sizeof(t_data));
@@ -73,13 +70,14 @@ int	main(int argc, char **argv)
 		check_valid(argv[1], data);
 		create_map(argv[1], data);
 		init_image(data);
-		data->mlx_ptr = mlx_init();
-		data->win_ptr = mlx_new_window(data->mlx_ptr, data->map.length * 32, data->map.height * 32, "so_long");
-		// play = mlx_xpm_file_to_image(data->mlx_ptr, data->image.player.one, &w, &h);
+		mlx_create_window(data);
+		// data->mlx_ptr = mlx_init();
+		// data->win_ptr = mlx_new_window(data->mlx_ptr, data->map.length * 32, data->map.height * 32, "so_long");
+		// play = mlx_xpm_file_to_image(data->mlx_ptr, data->image.player.one, &w, &w);
 		// mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, play, 32, 64);
-		mlx_hook(data->win_ptr, 17, 1L << 17, exit_game, data);
-		mlx_key_hook(data->win_ptr, key_input, data);
-		mlx_loop(data->mlx_ptr);
+		// mlx_hook(data->win_ptr, 17, 1L << 17, exit_game, data);
+		// mlx_key_hook(data->win_ptr, key_input, data);
+		// mlx_loop(data->mlx_ptr);
 	}
 	else
 		ft_putstr_fd("Usage: [Programe Name] [Map.ber]", 1);
