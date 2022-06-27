@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:52:14 by welim             #+#    #+#             */
-/*   Updated: 2022/06/27 20:39:27 by welim            ###   ########.fr       */
+/*   Updated: 2022/06/27 22:44:34 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@
 
 typedef struct s_motion
 {
-	char *one;
-	char *two;
-	char *three;
-	char *four;
-	char *five;
+	void *one;
+	void *two;
+	void *three;
+	void *four;
+	void *five;
 	int count;
 	int x;
 	int y;
@@ -43,8 +43,8 @@ typedef struct s_image
 	t_motion killer;
 	t_motion coin;
 	t_motion exit;
-	char	*wall;
-	char	*floor;
+	t_motion wall;
+	t_motion floor;
 	int		coin_count;
 }	t_image;
 
