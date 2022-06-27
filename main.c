@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:49:08 by welim             #+#    #+#             */
-/*   Updated: 2022/06/26 11:41:29 by welim            ###   ########.fr       */
+/*   Updated: 2022/06/27 22:04:07 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static t_data	*init_struct(t_data *data)
 	data->image.killer.count = 0;
 	data->map.height = 0;
 	data->map.length = 0;
+	data->image.player.x = 0;
+	data->image.player.y = 0;
 	return (data);
 }
 
@@ -48,13 +50,55 @@ int	key_input(int key, t_data *data)
 	return (0);
 }
 
-static int	init_image(t_data *data)
+static int	init_image_path(t_data *data)
 {
 	data->image.player.one = "./image/player.xpm";
 	data->image.killer.one  = "/image/killer.xpm";
 	data->image.wall = "./image/wall.xpm";
 	data->image.floor = "./image/floor.xpm";
 	return (0);
+}
+
+static void	init_obj_pos(t_data *data)
+{
+	int x;
+	int y;
+	int w;
+	void *wall;
+
+	x = 0;
+	// printf ("%c\n", data->map.map[1][3]);
+	while (data->map.map[x] != 0)
+	{
+		y = 0;
+		while (data->map.map[x][y] != 0)
+		{
+			if (data->map.map[x][y] == '1')
+			{
+				wall = mlx_xpm_file_to_image(data->mlx_ptr, data->image.player.one, &w, &w);
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, wall, y * 32, x * 32);
+			}
+			// if (data->map.map[x][y] == 'P')
+			// {
+			// 	data->image.player.x = x;
+			// 	data->image.player.y = y;
+			// }
+			// if (data->map.map[x][y] == 'K')
+			// {
+			// 	data->image.killer.x = x;
+			// 	data->image.killer.y = y;
+			// }
+			// if (data->map.map[x][y] == 'E')
+			// {
+				// data->image.player.x = x;
+				// data->image.player.y = y;
+			// }
+			y++;
+		}
+		x++;
+	}
+	printf ("x = %d\n", data->image.player.x);
+	printf ("y = %d\n", data->image.player.y);
 }
 
 int	main(int argc, char **argv)
@@ -69,8 +113,11 @@ int	main(int argc, char **argv)
 		init_struct(data);
 		check_valid(argv[1], data);
 		create_map(argv[1], data);
-		init_image(data);
-		mlx_create_window(data);
+		data->mlx_ptr = mlx_init();
+		data->win_ptr = mlx_new_window(data->mlx_ptr, data->map.length * 32, data->map.height * 32, "so_long");
+		init_image_path(data);
+		init_obj_pos(data);
+		// mlx_create_window(data);
 		// data->mlx_ptr = mlx_init();
 		// data->win_ptr = mlx_new_window(data->mlx_ptr, data->map.length * 32, data->map.height * 32, "so_long");
 		// play = mlx_xpm_file_to_image(data->mlx_ptr, data->image.player.one, &w, &w);

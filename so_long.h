@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:52:14 by welim             #+#    #+#             */
-/*   Updated: 2022/06/26 11:41:33 by welim            ###   ########.fr       */
+/*   Updated: 2022/06/27 20:39:27 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_motion
 	char *four;
 	char *five;
 	int count;
+	int x;
+	int y;
 }	t_motion;
 
 typedef struct s_image
