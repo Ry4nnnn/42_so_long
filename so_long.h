@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:52:14 by welim             #+#    #+#             */
-/*   Updated: 2022/06/27 22:44:34 by welim            ###   ########.fr       */
+/*   Updated: 2022/07/05 17:36:39 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,7 @@ typedef struct s_motion
 	void *one;
 	void *two;
 	void *three;
-	void *four;
-	void *five;
 	int count;
-	int x;
-	int y;
 }	t_motion;
 
 typedef struct s_image
@@ -45,7 +41,6 @@ typedef struct s_image
 	t_motion exit;
 	t_motion wall;
 	t_motion floor;
-	int		coin_count;
 }	t_image;
 
 typedef struct	s_map
@@ -74,12 +69,18 @@ int		check_buffer_len(char *argv);
 void	populate_objects(char *buffer, t_data *data);
 void	check_objects(t_data *data);
 
-//create_map
+//create_images
 void	create_map(char *argv, t_data *data);
+void	create_images(t_data *data);
+// t_data	*converter(t_data *data, char *path);
+// void	create_player(t_data *data);
+// void	create_killer(t_data *data);
+// void	create_objects(t_data *data);
 
 // mlx.c
-void	mlx_create_window(t_data *data);
 int	exit_game(t_data *data);
 int	key_input(int key, t_data *data);
+t_data	create_window(t_data *data, char *name);
+
 
 #endif
