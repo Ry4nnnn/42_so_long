@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:49:08 by welim             #+#    #+#             */
-/*   Updated: 2022/07/06 17:26:06 by welim            ###   ########.fr       */
+/*   Updated: 2022/07/06 20:15:14 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 static t_data	*init_struct(t_data *data)
 {
-	data->image.coin.count = 0;
-	data->image.player.count = 0;
-	data->image.exit.count = 0;
-	data->image.killer.count = 0;
-	data->map.height = 0;
-	data->map.length = 0;
-	data->image.p_x = 0;
-	data->image.p_y = 0;
-	data->image.k_x = 0;
-	data->image.k_y = 0;
+	data->img.coin.count = 0;
+	data->img.ply.count = 0;
+	data->img.exit.count = 0;
+	data->img.killer.count = 0;
+	data->map.h = 0;
+	data->map.l = 0;
+	data->img.p_x = 0;
+	data->img.p_y = 0;
+	data->img.k_x = 0;
+	data->img.k_y = 0;
 	data->moves = 0;
 	return (data);
 }
@@ -31,7 +31,9 @@ static t_data	*init_struct(t_data *data)
 int	main(int argc, char **argv)
 {
 	t_data		*data;
+	char		*c;
 
+	c = "Moves:";
 	if (argc != 2)
 	{
 		ft_putstr_fd("Usage: [Programe Name] [Map.ber]", 1);
@@ -41,14 +43,14 @@ int	main(int argc, char **argv)
 	init_struct(data);
 	check_valid(argv[1], data);
 	create_map(argv[1], data);
-	data->mlx_ptr = mlx_init();
+	data->m_p = mlx_init();
 	create_window(data, "so_long");
 	create_images(data);
 	print_image(data);
-	mlx_loop_hook(data->mlx_ptr, &print_image, data);
-	mlx_hook(data->win_ptr, 17, 1L << 17, exit_game, data);
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 0, data->map.height * 32, 0xFFFFFF, "Moves:");
-	mlx_key_hook(data->win_ptr, key_input, data);
-	mlx_loop(data->mlx_ptr);
+	mlx_loop_hook(data->m_p, &print_image, data);
+	mlx_hook(data->w_p, 17, 1L << 17, exit_game, data);
+	mlx_string_put(data->m_p, data->w_p, 0, data->map.h * 32, 0xFFFFFF, c);
+	mlx_key_hook(data->w_p, key_input, data);
+	mlx_loop(data->m_p);
 	return (0);
 }

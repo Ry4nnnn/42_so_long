@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_valid_utils.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/06 19:42:49 by welim             #+#    #+#             */
+/*   Updated: 2022/07/06 20:03:01 by welim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	check_top_bot_line(int fd)
@@ -75,35 +87,35 @@ void	populate_objects(char *buffer, t_data *data)
 	while (buffer[i] != '\0')
 	{
 		if (buffer[i] == 'P')
-			data->image.player.count += 1;
+			data->img.ply.count += 1;
 		else if (buffer[i] == 'E')
-			data->image.exit.count += 1;
+			data->img.exit.count += 1;
 		else if (buffer[i] == 'C')
-			data->image.coin.count += 1;
+			data->img.coin.count += 1;
 		else if (buffer[i] == 'K')
-			data->image.killer.count += 1;
+			data->img.killer.count += 1;
 		i++;
 	}
 }
 
 void	check_objects(t_data *data)
 {
-	if (data->image.player.count != 1)
+	if (data->img.ply.count != 1)
 	{
 		ft_putendl_fd("Must only contain one Player[P]", 2);
 		exit (1);
 	}
-	else if (data->image.exit.count < 1)
+	else if (data->img.exit.count < 1)
 	{
 		ft_putendl_fd("Must atleast contain one Exit[E]", 2);
 		exit (1);
 	}
-	else if (data->image.coin.count < 1)
+	else if (data->img.coin.count < 1)
 	{
 		ft_putendl_fd("Must atleast contain one Coin[C]", 2);
 		exit (1);
 	}
-	else if (data->image.killer.count > 1)
+	else if (data->img.killer.count > 1)
 	{
 		ft_putendl_fd("Must only contain one Killer[K]", 2);
 		exit (1);

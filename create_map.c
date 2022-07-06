@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_map.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/06 19:45:55 by welim             #+#    #+#             */
+/*   Updated: 2022/07/06 20:14:55 by welim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-static char *fill_column(char *buffer)
+static char	*fill_column(char *buffer)
 {
-	char *temp;
-	char *newline;
-	char *res;
+	char	*temp;
+	char	*newline;
+	char	*res;
 
 	newline = "\n";
 	temp = ft_strdup(buffer);
@@ -14,10 +26,10 @@ static char *fill_column(char *buffer)
 
 static void	init_map(char *argv, t_data *data)
 {
-	int rows;
-	char *buffer;
-	int fd;
-	int i;
+	int		rows;
+	char	*buffer;
+	int		fd;
+	int		i;
 
 	i = 0;
 	rows = counter_line(argv);
@@ -36,17 +48,17 @@ static void	init_map(char *argv, t_data *data)
 
 static void	init_map_size(char *argv, t_data *data)
 {
-	int fd;
-	char *buffer;
-	char *temp;
+	int		fd;
+	char	*buffer;
+	char	*temp;
 
-	data->map.height = counter_line(argv);
+	data->map.h = counter_line(argv);
 	fd = open(argv, O_RDONLY);
 	buffer = get_next_line(fd);
 	close (fd);
 	temp = fill_column(buffer);
 	free (buffer);
-	data->map.length = ft_strlen(temp);
+	data->map.l = ft_strlen(temp);
 	free(temp);
 }
 

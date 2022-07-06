@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   control_main.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/06 19:43:44 by welim             #+#    #+#             */
+/*   Updated: 2022/07/06 19:44:00 by welim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-static void player_control(int key, t_data *data)
+static void	player_control(int key, t_data *data)
 {
 	if (key == 13)
 	{
@@ -24,7 +36,7 @@ static void player_control(int key, t_data *data)
 	}
 }
 
-static void killer_control(int key, t_data *data)
+static void	killer_control(int key, t_data *data)
 {
 	if (key == 126)
 		move_kw(data);

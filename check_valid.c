@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_valid.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/06 19:41:50 by welim             #+#    #+#             */
+/*   Updated: 2022/07/06 19:42:28 by welim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 //to get the total lines of the map
@@ -18,7 +30,6 @@ int	counter_line(char *argv)
 	}
 	free (buffer);
 	close (fd);
-	// printf ("counter: %d\n", counter);
 	return (counter);
 }
 
@@ -73,7 +84,6 @@ static void	check_rules(char *argv, t_data *data)
 	char	*buffer;
 
 	count = counter_line(argv);
-
 	fd = open(argv, O_RDONLY);
 	while (count)
 	{
@@ -82,7 +92,6 @@ static void	check_rules(char *argv, t_data *data)
 		count--;
 	}
 	close (fd);
-	// printf ("player: %d\ncoin: %d\nexit: %d\nkiller: %d", data->player.count, data->coin.count, data->exit.count, data->killer.count);
 	check_objects(data);
 	return ;
 }
