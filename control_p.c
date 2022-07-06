@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-static void	move_w(t_data *data)
+void	move_pw(t_data *data)
 {
 	char **map;
 
@@ -21,7 +21,7 @@ static void	move_w(t_data *data)
 	return ;
 }
 
-static void	move_s(t_data *data)
+void	move_ps(t_data *data)
 {
 	char **map;
 
@@ -42,7 +42,7 @@ static void	move_s(t_data *data)
 	return ;
 }
 
-static void	move_d(t_data *data)
+void	move_pd(t_data *data)
 {
 	char **map;
 
@@ -63,7 +63,7 @@ static void	move_d(t_data *data)
 	return ;
 }
 
-static void	move_a(t_data *data)
+void	move_pa(t_data *data)
 {
 	char **map;
 
@@ -82,32 +82,4 @@ static void	move_a(t_data *data)
 		exit_game(data);
 	}
 	return ;
-}
-
-int	key_input(int key, t_data *data)
-{
-	if (key == 13)
-	{
-		move_w(data);
-		move_w2(data);
-	}
-	else if (key == 0)
-	{
-		move_a(data);
-		move_a2(data);
-	}
-	else if (key == 1)
-	{
-		move_s(data);
-		move_s2(data);
-	}
-	else if (key == 2)
-	{
-		move_d(data);
-		move_d2(data);
-	}
-	else if (key == 53)
-		exit_game(data);
-	moves_counter(data);
-	return (0);
 }

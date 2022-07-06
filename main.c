@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:49:08 by welim             #+#    #+#             */
-/*   Updated: 2022/07/06 16:05:28 by welim            ###   ########.fr       */
+/*   Updated: 2022/07/06 17:26:06 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static t_data	*init_struct(t_data *data)
 	data->map.length = 0;
 	data->image.p_x = 0;
 	data->image.p_y = 0;
+	data->image.k_x = 0;
+	data->image.k_y = 0;
 	data->moves = 0;
 	return (data);
 }

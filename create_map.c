@@ -54,6 +54,4 @@ void	create_map(char *argv, t_data *data)
 {
 	init_map(argv, data);
 	init_map_size(argv, data);
-	// printf ("length: %d\n", data->map.length);
-	// printf ("height: %d\n", data->map.height);
 }

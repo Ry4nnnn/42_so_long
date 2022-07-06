@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:52:14 by welim             #+#    #+#             */
-/*   Updated: 2022/07/06 15:58:14 by welim            ###   ########.fr       */
+/*   Updated: 2022/07/06 17:52:11 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct s_image
 	t_motion floor;
 	int	p_x;
 	int p_y;
+	int	k_x;
+	int k_y;
 }	t_image;
 
 typedef struct	s_map
@@ -53,6 +55,7 @@ typedef struct s_data
 	t_map		map;
 	t_image		image;
 	int 		moves;
+	int			frame;
 }	t_data;
 
 //so_long check_valid
@@ -76,11 +79,27 @@ int	exit_game(t_data *data);
 t_data	create_window(t_data *data, char *name);
 void	moves_counter(t_data *data);
 
-//controls2
+//main_controls
 int	key_input(int key, t_data *data);
-void	move_w2(t_data *data);
-void	move_s2(t_data *data);
-void	move_d2(t_data *data);
-void	move_a2(t_data *data);
+
+//player_control
+void	move_pw(t_data *data);
+void	move_pw2(t_data *data);
+void	move_ps(t_data *data);
+void	move_ps2(t_data *data);
+void	move_pd(t_data *data);
+void	move_pd2(t_data *data);
+void	move_pa(t_data *data);
+void	move_pa2(t_data *data);
+
+//killer_controls
+void	move_kw(t_data *data);
+void	move_kw2(t_data *data);
+void	move_ks(t_data *data);
+void	move_ks2(t_data *data);
+void	move_kd(t_data *data);
+void	move_kd2(t_data *data);
+void	move_ka(t_data *data);
+void	move_ka2(t_data *data);
 
 #endif

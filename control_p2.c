@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	move_w2(t_data *data)
+void	move_pw2(t_data *data)
 {
 	char **map;
 
@@ -23,7 +23,7 @@ void	move_w2(t_data *data)
 	return ;
 }
 
-void	move_s2(t_data *data)
+void	move_ps2(t_data *data)
 {
 	char **map;
 
@@ -46,7 +46,7 @@ void	move_s2(t_data *data)
 	return ;
 }
 
-void	move_d2(t_data *data)
+void	move_pd2(t_data *data)
 {
 	char **map;
 
@@ -69,7 +69,7 @@ void	move_d2(t_data *data)
 	return ;
 }
 
-void	move_a2(t_data *data)
+void	move_pa2(t_data *data)
 {
 	char **map;
 

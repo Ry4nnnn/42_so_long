@@ -1,5 +1,28 @@
 #include "so_long.h"
 
+static void player_anime(t_data *data, int x, int y)
+{
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.floor.one, y * 32, x * 32);
+	if (data->frame < 10 || (data->frame >= 30 && data->frame < 40))
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.player.one, y * 32, x * 32);
+	else if ((data->frame >= 10 && data->frame < 20) || (data->frame >= 40 && data->frame < 50))
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.player.two, y * 32, x * 32);
+	else if ((data->frame >= 20 && data->frame < 30) || (data->frame >= 50 && data->frame < 60))
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.player.three, y * 32, x * 32);
+}
+
+static void killer_anime(t_data *data, int x, int y)
+{
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.floor.one, y * 32, x * 32);
+	if (data->frame < 20)
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.killer.one, y * 32, x * 32);
+	else if (data->frame < 40)
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.killer.two, y * 32, x * 32);
+	else if (data->frame < 60)
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.killer.three, y * 32, x * 32);
+
+}
+
 int	print_image(t_data *data)
 {
 	int x;
@@ -19,13 +42,13 @@ int	print_image(t_data *data)
 			{
 				data->image.p_x = x;
 				data->image.p_y = y;
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.floor.one, y * 32, x * 32);
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.player.one, y * 32, x * 32);
+				player_anime(data, x, y);
 			}
 			if (data->map.map[x][y] == 'K')
 			{
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.floor.one, y * 32, x * 32);
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.killer.one, y * 32, x * 32);
+				data->image.k_x = x;
+				data->image.k_y = y;
+				killer_anime(data, x, y);
 			}
 			if (data->map.map[x][y] == 'C')
 			{
@@ -41,6 +64,8 @@ int	print_image(t_data *data)
 		}
 		x++;
 	}
-	// idk(data):
+	data->frame++;
+	if (data->frame > 49)
+		data->frame = 0;
 	return (0);
 }
