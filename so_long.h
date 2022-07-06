@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:52:14 by welim             #+#    #+#             */
-/*   Updated: 2022/07/05 17:36:39 by welim            ###   ########.fr       */
+/*   Updated: 2022/07/06 15:58:14 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@
 # include "libft/libft.h"
 # include <stdio.h>
 # include <fcntl.h>
-
-// typedef struct s_position
-// {
-// 	int	x;
-// 	int	y;
-// }	t_position;
 
 typedef struct s_motion
 {
@@ -41,6 +35,8 @@ typedef struct s_image
 	t_motion exit;
 	t_motion wall;
 	t_motion floor;
+	int	p_x;
+	int p_y;
 }	t_image;
 
 typedef struct	s_map
@@ -56,6 +52,7 @@ typedef struct s_data
 	void		*win_ptr;
 	t_map		map;
 	t_image		image;
+	int 		moves;
 }	t_data;
 
 //so_long check_valid
@@ -72,15 +69,18 @@ void	check_objects(t_data *data);
 //create_images
 void	create_map(char *argv, t_data *data);
 void	create_images(t_data *data);
-// t_data	*converter(t_data *data, char *path);
-// void	create_player(t_data *data);
-// void	create_killer(t_data *data);
-// void	create_objects(t_data *data);
+int		print_image(t_data *data);
 
-// mlx.c
+// windows
 int	exit_game(t_data *data);
-int	key_input(int key, t_data *data);
 t_data	create_window(t_data *data, char *name);
+void	moves_counter(t_data *data);
 
+//controls2
+int	key_input(int key, t_data *data);
+void	move_w2(t_data *data);
+void	move_s2(t_data *data);
+void	move_d2(t_data *data);
+void	move_a2(t_data *data);
 
 #endif

@@ -43,7 +43,7 @@ static void	check_mapfile_name(char *argv)
 	exit (1);
 }
 
-static void	check_map(char *argv)
+static void	check_map_size(char *argv)
 {
 	int		fd;
 	int		fd_len;
@@ -90,7 +90,7 @@ static void	check_rules(char *argv, t_data *data)
 void	check_valid(char *argv, t_data *data)
 {
 	check_mapfile_name(argv);
-	check_map(argv);
+	check_map_size(argv);
 	check_rules(argv, data);
 	return ;
 }
