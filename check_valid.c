@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:41:50 by welim             #+#    #+#             */
-/*   Updated: 2022/07/06 19:42:28 by welim            ###   ########.fr       */
+/*   Updated: 2022/07/07 18:11:04 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,19 @@ static void	check_map_size(char *argv)
 
 	fd_len = counter_line(argv);
 	fd = open(argv, O_RDONLY);
-	check_top_bot_line(fd);
+	check_top_line(fd);
 	while (fd_len > 2)
 	{
 		check_mid_line(fd);
 		fd_len--;
 	}
-	check_top_bot_line(fd);
+	check_bot_line(fd);
 	close (fd);
 	if (!(check_buffer_len(argv)))
 	{
 		ft_putendl_fd("Invalid map", 2);
 		exit (1);
 	}
-	return ;
 }
 
 static void	check_rules(char *argv, t_data *data)
@@ -89,6 +88,7 @@ static void	check_rules(char *argv, t_data *data)
 	{
 		buffer = get_next_line(fd);
 		populate_objects(buffer, data);
+		free (buffer);
 		count--;
 	}
 	close (fd);

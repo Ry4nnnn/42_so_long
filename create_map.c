@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:45:55 by welim             #+#    #+#             */
-/*   Updated: 2022/07/06 20:14:55 by welim            ###   ########.fr       */
+/*   Updated: 2022/07/07 19:06:42 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static char	*fill_column(char *buffer)
 	newline = "\n";
 	temp = ft_strdup(buffer);
 	res = ft_strtrim(temp, newline);
+	free (temp);
 	return (res);
 }
 
@@ -34,7 +35,7 @@ static void	init_map(char *argv, t_data *data)
 	i = 0;
 	rows = counter_line(argv);
 	fd = open(argv, O_RDONLY);
-	data->map.map = malloc(sizeof(char *) * rows);
+	data->map.map = malloc(sizeof(char *) * (rows + 1));
 	while (rows > i)
 	{
 		buffer = get_next_line(fd);

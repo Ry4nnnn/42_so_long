@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 22:52:14 by welim             #+#    #+#             */
-/*   Updated: 2022/07/06 20:51:32 by welim            ###   ########.fr       */
+/*   Updated: 2022/07/07 17:20:17 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libft/libft.h"
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 typedef struct s_motion
 {
@@ -62,8 +63,9 @@ void	check_valid(char *argv, t_data *data);
 int		counter_line(char *argv);
 
 //so_long check_valid_utils
-int		check_top_bot_line(int fd);
+int		check_top_line(int fd);
 int		check_mid_line(int fd);
+int		check_bot_line(int fd);
 int		check_buffer_len(char *argv);
 void	populate_objects(char *buffer, t_data *data);
 void	check_objects(t_data *data);

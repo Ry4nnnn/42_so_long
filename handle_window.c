@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:46:52 by welim             #+#    #+#             */
-/*   Updated: 2022/07/06 20:15:07 by welim            ###   ########.fr       */
+/*   Updated: 2022/07/07 17:51:57 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	exit_game(t_data *data)
 {
 	mlx_destroy_window(data->m_p, data->w_p);
+	system("leaks so_long");
 	exit(0);
 	return (0);
 }

@@ -4,7 +4,7 @@ OBJS	= ${SRCS:.c=.o}
 LIB		= -L./libft -lft -lmlx
 INCLUDE = -Iincludes -Imlx -Ilibft
 
-FLAGS	= -Wall -Werror -Wextra
+FLAGS	= -Wall -Werror -Wextra #-g3 -fsanitize=address
 LINKS	= -framework OpenGL -framework Appkit
 CC		= gcc
 RM		= rm -rf

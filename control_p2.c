@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:44:59 by welim             #+#    #+#             */
-/*   Updated: 2022/07/06 20:50:47 by welim            ###   ########.fr       */
+/*   Updated: 2022/07/07 17:45:07 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	move_pw2(t_data *data)
 	{
 		if (data->img.coin.count == 0)
 		{
-			ft_putstr_fd("YOU WON!", 1);
+			ft_putstr_fd("You won with just ", 1);
+			ft_putnbr_fd(data->moves + 1, 1);
+			ft_putstr_fd(" steps", 1);
 			exit_game(data);
 		}
 	}
@@ -51,7 +53,9 @@ void	move_ps2(t_data *data)
 	{
 		if (data->img.coin.count == 0)
 		{
-			ft_putstr_fd("YOU WON!", 1);
+			ft_putstr_fd("You won with just ", 1);
+			ft_putnbr_fd(data->moves + 1, 1);
+			ft_putstr_fd(" steps", 1);
 			exit_game(data);
 		}
 	}
@@ -74,7 +78,9 @@ void	move_pd2(t_data *data)
 	{
 		if (data->img.coin.count == 0)
 		{
-			ft_putstr_fd("YOU WON!", 1);
+			ft_putstr_fd("You won with just ", 1);
+			ft_putnbr_fd(data->moves + 1, 1);
+			ft_putstr_fd(" steps", 1);
 			exit_game(data);
 		}
 	}
@@ -97,7 +103,9 @@ void	move_pa2(t_data *data)
 	{
 		if (data->img.coin.count == 0)
 		{
-			ft_putstr_fd("YOU WON!", 1);
+			ft_putstr_fd("You won with just ", 1);
+			ft_putnbr_fd(data->moves + 1, 1);
+			ft_putstr_fd(" steps", 1);
 			exit_game(data);
 		}
 	}
